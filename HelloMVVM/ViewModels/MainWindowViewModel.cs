@@ -17,7 +17,7 @@ namespace HelloMVVM.ViewModels
             set {
                 if (input1 == value) return;
                 input1 = value;
-                this.RaisePropertyChanged(nameof(Input1));
+                //this.RaisePropertyChanged(nameof(Input1));
             }
         }
 
@@ -29,7 +29,7 @@ namespace HelloMVVM.ViewModels
             {
                 if (input2 == value) return;
                 input2 = value;
-                this.RaisePropertyChanged(nameof(Input2));
+                //this.RaisePropertyChanged(nameof(Input2));
             }
         }
 
@@ -46,14 +46,14 @@ namespace HelloMVVM.ViewModels
         }
 
 
-        public DelegateCommand AddButton { get; set; }
+        public DelegateCommand AddButton { get; set; } = new DelegateCommand();
 
         public void Add(object obj)
         {
             Result = Input1 + Input2;
         }
 
-        public DelegateCommand SaveButton { get; set; }
+        public DelegateCommand SaveButton { get; set; } = new DelegateCommand();
 
         public void Save(object obj)
         {
@@ -65,10 +65,7 @@ namespace HelloMVVM.ViewModels
 
         public MainWindowViewModel()
         {
-            AddButton = new DelegateCommand();
             AddButton.ExecuteAction += Add;
-
-            SaveButton = new DelegateCommand();
             SaveButton.ExecuteAction += Save;
         }
 
